@@ -16,7 +16,7 @@ import "../../assets/css/reset.css";
 import "@/styles/index.css";
 import "@/styles/index.less";
 
-const LazyBattle = loadable(() => import("@/pages/battle.js"));
+const LazyBattle = loadable(() => import("@/pages/battle"));
 
 class App extends React.Component {
   constructor(props) {

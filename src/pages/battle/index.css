@@ -1,0 +1,75 @@
+.instruc {
+  text-align: center;
+}
+.instruc ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.instruc ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(30%);
+  text-align: center;
+}
+.instruc ul li .instructions-title {
+  font-size: 20px;
+  text-align: center;
+  margin: 25px 16px;
+}
+.instruc .instructions-icon {
+  background-color: #eee;
+  font-size: 120px !important;
+  padding: 32px;
+  width: 190px;
+  border-radius: 10px;
+}
+.instruc .play-modal {
+  height: 60px;
+  line-height: 60px;
+}
+.instruc .form-list {
+  display: flex;
+  flex-direction: row;
+}
+.instruc .list-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.instruc .list-content + .list-content {
+  margin-left: 20px;
+}
+.instruc .list-content .list-item {
+  display: flex;
+  flex-direction: row;
+}
+.instruc .list-content .list-name {
+  flex: 2;
+  height: 42px;
+  font-size: 18px;
+  padding-left: 16px;
+  border-radius: 30px;
+  border: none;
+  background-color: #eee;
+  outline: none;
+}
+.instruc .list-content .list-btn {
+  flex: 1;
+  margin-left: 16px;
+  color: #fff;
+  font-size: 20px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #1890ff;
+  cursor: pointer;
+}
+.instruc .list-content .list-btn[disabled] {
+  color: rgba(0, 0, 0, 0.25);
+  border-color: #d9d9d9;
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
