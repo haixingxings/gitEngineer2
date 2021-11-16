@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroller";
+import PopularItem from "@/components/PopularItem";
 import loadingIcon from "../../../../assets/img/loading.gif";
 import "../../../../config/axios";
 import assetsStyle from "../../../../assets/css/index.less";
@@ -167,7 +168,8 @@ class Content extends React.Component {
               <ul className={assetsStyle["content-list"]}>
                 {dataList.map((item, index) => (
                   <li key={item.id}>
-                    <h2
+                    <PopularItem itemData={item} index={index} />
+                    {/* <h2
                       className={`${assetsStyle["text-center"]} ${assetsStyle.score}`}
                     >
                       #{index + 1}
@@ -256,7 +258,7 @@ class Content extends React.Component {
                         }}
                       />
                       {item.open_issues_count} Open issues
-                    </div>
+                    </div> */}
                   </li>
                 ))}
               </ul>

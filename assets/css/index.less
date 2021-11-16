@@ -122,7 +122,7 @@ li.active a {
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 0%;
-  justify-content: space-around;
+  justify-content:space-between;
   margin-bottom: 48px;
 }
 .content-list img {
@@ -145,6 +145,15 @@ li.active a {
   margin-bottom: 10px;
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.08);
+}
+@media only screen and (max-width: 800px) {
+  .content-list li {
+    width: 30%;
+  }
+}
+@media only screen and (min-width: 481px) and (max-width: 800px) {
+}
+@media only screen and (max-width: 480) {
 }
 .content-list li:hover {
   box-shadow: 2px 2px 8px 0 rgb(173 190 204 / 35%);

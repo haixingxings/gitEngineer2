@@ -1,0 +1,38 @@
+.popularItem {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: #FFF;
+  &:hover {
+    box-shadow: 2px 2px 8px 0 rgb(173 190 204 / 35%);
+  }
+  .content-avatar {
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+    img {
+      height: 118px;
+      transition: all 500ms ease;
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+  }
+  .score {
+    text-align: center;
+    margin: 20px 0;
+  }
+  i {
+    margin-right: 10px;
+  }
+  .error-lists {
+    display: flex;
+    flex-direction: column;
+    .error-lists .errors + .errors {
+      margin-top: 20px;
+    }
+  }
+}
