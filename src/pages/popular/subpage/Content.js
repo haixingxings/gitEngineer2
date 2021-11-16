@@ -16,7 +16,7 @@ class Content extends React.Component {
       // check: false,
       isErrors: false,
       errorMessage: "",
-      hasMore: false,
+      hasMore: false
       // hasMore: true, // 是否开启下拉加载
       // data: [], // 接受我每次的数据
       // count: 10, //下拉加载
@@ -37,7 +37,7 @@ class Content extends React.Component {
           dataList: [],
           hasMore: false,
           isErrors: false,
-          page: 1,
+          page: 1
         },
         () => {
           this.getData(nextProps.currentIndex, 1, true);
@@ -48,12 +48,13 @@ class Content extends React.Component {
   /* eslint-disable */
 
   getMore = () => {
+    console.log("getMore");
     const search = window.location.hash.slice(15) || "All";
     const { page } = this.state;
     this.setState(
       {
         page: page + 1,
-        hasMore: false,
+        hasMore: false
       },
       () => {
         this.getData(search, this.state.page);
@@ -84,7 +85,7 @@ class Content extends React.Component {
     }
     this.setState(
       {
-        loading: true,
+        loading: true
       },
       () => {
         axios.get(url).then((res) => {
@@ -105,25 +106,25 @@ class Content extends React.Component {
                   open_issues_count: items.open_issues_count,
                   avatar_url: items.owner.avatar_url,
                   svn_url: items.svn_url,
-                  html_url: items.owner.html_url,
+                  html_url: items.owner.html_url
                 }));
                 if (isChange) {
                   this.setState({
                     loading: false,
                     hasMore: true,
-                    dataList: dataListData,
+                    dataList: dataListData
                   });
                 } else {
                   const { dataList } = this.state;
                   this.setState({
                     loading: false,
-                    hasMore: false,
-                    dataList: dataList.concat(dataListData),
+                    hasMore: true,
+                    dataList: dataList.concat(dataListData)
                   });
                 }
               } else {
                 this.setState({
-                  hasMore: false,
+                  hasMore: false
                 });
               }
             }
@@ -133,7 +134,7 @@ class Content extends React.Component {
               dataList: [],
               loading: false,
               hasMore: false,
-              errorMessage: res.msg,
+              errorMessage: res.msg
             });
           }
         });
@@ -144,7 +145,7 @@ class Content extends React.Component {
   close = () => {
     this.setState(
       {
-        isErrors: false,
+        isErrors: false
       },
       () => {
         this.getData(this.props.currentIndex, 1, true);
@@ -198,7 +199,7 @@ class Content extends React.Component {
                         flexDirection: "row",
                         height: "36px",
                         justifyContent: "center",
-                        marginBottom: "15px",
+                        marginBottom: "15px"
                       }}
                     >
                       <a
@@ -215,7 +216,7 @@ class Content extends React.Component {
                         marginBottom: "6px",
                         display: "flex",
                         flexDirection: "row",
-                        alignItems: "center",
+                        alignItems: "center"
                       }}
                     >
                       <i
@@ -224,7 +225,7 @@ class Content extends React.Component {
                           display: "inline-flex",
                           width: "16px",
                           justifyContent: "center",
-                          color: "rgb(255, 191, 116)",
+                          color: "rgb(255, 191, 116)"
                         }}
                       />
                       <a
@@ -243,7 +244,7 @@ class Content extends React.Component {
                           display: "inline-flex",
                           width: "16px",
                           justifyContent: "center",
-                          color: "rgb(255, 215, 0)",
+                          color: "rgb(255, 215, 0)"
                         }}
                       />
                       {item.stargazers_count} stars
@@ -255,7 +256,7 @@ class Content extends React.Component {
                           display: "inline-flex",
                           width: "16px",
                           justifyContent: "center",
-                          color: "rgb(129, 195, 245)",
+                          color: "rgb(129, 195, 245)"
                         }}
                       />
                       {item.forks_count} forks
@@ -267,7 +268,7 @@ class Content extends React.Component {
                           display: "inline-flex",
                           width: "16px",
                           justifyContent: "center",
-                          color: "rgb(241, 138, 147)",
+                          color: "rgb(241, 138, 147)"
                         }}
                       />
                       {item.open_issues_count} Open issues
