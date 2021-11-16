@@ -101,7 +101,8 @@ module.exports = function (env, argv) {
     ],
     resolve: {
       alias: {
-        "@": path.resolve("src")
+        "@": path.resolve("src"),
+        utils: path.resolve("./src/utils")
       }
     },
     devServer: {

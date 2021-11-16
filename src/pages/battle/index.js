@@ -3,6 +3,7 @@ import axios from "axios";
 import InfiniteScroll from "react-infinite-scroller";
 import { Link } from "react-router-dom";
 import { Formik, FormikProps, Form, Field, ErrorMessage } from "formik";
+import { debounce } from "../../utils/utils";
 import Loading from "../../components/Loading";
 import Instruct from "./subpage/instruct";
 import "../../../config/axios.js";
@@ -235,7 +236,10 @@ export default class Battle extends React.Component {
               }
               return errors;
             }}
-            onSubmit={this.handleSubmit}
+            onSubmit={debounce(
+              (values, obj) => this.handleSubmit(values, obj),
+              1000
+            )}
           >
             {(formProps) => {
               console.log("formProps", formProps);
