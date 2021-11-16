@@ -5,14 +5,14 @@
 a {
   text-decoration: none !important;
 }
+.top-tab {
+  margin-top: 30px;
+}
 .top-tab ul {
   display: flex;
   flex-direction: row;
   height: 60px;
   line-height: 60px;
-}
-.top-tab {
-  margin-top: 30px;
 }
 .top-tab ul li {
   margin-right: 50px;
@@ -136,7 +136,7 @@ li.active a {
 .content-list li {
   box-sizing: border-box;
   width: 23%;
-  padding: 24px;
+  padding: 12px;
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 8px;

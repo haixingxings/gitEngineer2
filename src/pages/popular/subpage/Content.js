@@ -12,7 +12,7 @@ class Content extends React.Component {
       // currentIndex: "All",
       loading: false,
       dataList: [],
-      page: 0,
+      page: 1,
       // check: false,
       isErrors: false,
       errorMessage: "",
@@ -131,7 +131,7 @@ class Content extends React.Component {
           } else {
             this.setState({
               isErrors: true,
-              dataList: [],
+              // dataList: [],
               loading: false,
               hasMore: false,
               errorMessage: res.msg
@@ -163,18 +163,6 @@ class Content extends React.Component {
           hasMore={this.state.hasMore} // 是否继续监听滚动事件 true 监听 | false 不再监听
         >
           <div className={assetsStyle.content} style={{ marginTop: "50px" }}>
-            {this.state.isErrors ? (
-              <div
-                className={assetsStyle.errors}
-                style={{ position: "relative" }}
-              >
-                报错了:{this.state.errorMessage}
-                {/* <i className="fa fa-window-close" onClick={this.close} style={{display: 'inline-flex',width: '16px', justifyContent: 'center',position:'absolute',right:'14px',top:'9px',cursor:'pointer'}}></i> */}
-                <div className={assetsStyle.resetBtn} onClick={this.close}>
-                  <a className={assetsStyle["product-btn"]}>重试</a>
-                </div>
-              </div>
-            ) : null}
             <div>
               <ul className={assetsStyle["content-list"]}>
                 {dataList.map((item, index) => (
@@ -187,11 +175,7 @@ class Content extends React.Component {
                     <div
                       className={`${assetsStyle["text-center"]} ${assetsStyle["content-avatar"]}`}
                     >
-                      <img
-                        src={item.avatar_url}
-                        style={{ width: "50%" }}
-                        alt=""
-                      />
+                      <img src={item.avatar_url} alt="" />
                     </div>
                     <h4
                       style={{
@@ -276,6 +260,17 @@ class Content extends React.Component {
                   </li>
                 ))}
               </ul>
+              {this.state.isErrors ? (
+                <div
+                  className={assetsStyle.errors}
+                  style={{ position: "relative" }}
+                >
+                  报错了:{this.state.errorMessage}
+                  <div className={assetsStyle.resetBtn} onClick={this.close}>
+                    <a className={assetsStyle["product-btn"]}>重试</a>
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
         </InfiniteScroll>
