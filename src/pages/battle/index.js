@@ -30,52 +30,55 @@ export default class Battle extends React.Component {
 
   handleSubmit = (values, { props = this.props, setSubmitting }) => {
     console.log("提交", values, props, setSubmitting);
-    setSubmitting(false);
-    this.setState(
-      {
-        ...values
-      },
-      () => {
-        console.log("存储first_name", values.first_name);
-        console.log("存储last_name", values.last_name);
-        if (values.first_name) {
-          this.setState(
-            {
-              first_loading: true,
-              isFirstError: false,
-              firstMessage: ""
-            },
-            () => {
-              this.getUser(
-                "first_data",
-                "isFirstError",
-                "firstMessage",
-                "first_loading",
-                this.state.first_name
-              );
-            }
-          );
+    const debounces = debounce(() => {
+      setSubmitting(false);
+      this.setState(
+        {
+          ...values
+        },
+        () => {
+          console.log("存储first_name", values.first_name);
+          console.log("存储last_name", values.last_name);
+          if (values.first_name) {
+            this.setState(
+              {
+                first_loading: true,
+                isFirstError: false,
+                firstMessage: ""
+              },
+              () => {
+                this.getUser(
+                  "first_data",
+                  "isFirstError",
+                  "firstMessage",
+                  "first_loading",
+                  this.state.first_name
+                );
+              }
+            );
+          }
+          if (values.last_name) {
+            this.setState(
+              {
+                last_loading: true,
+                isLastError: false,
+                lastMessage: ""
+              },
+              () => {
+                this.getUser(
+                  "last_data",
+                  "isLastError",
+                  "lastMessage",
+                  "last_loading",
+                  this.state.last_name
+                );
+              }
+            );
+          }
         }
-        if (values.last_name) {
-          this.setState(
-            {
-              last_loading: true,
-              isLastError: false,
-              lastMessage: ""
-            },
-            () => {
-              this.getUser(
-                "last_data",
-                "isLastError",
-                "lastMessage",
-                "last_loading",
-                this.state.last_name
-              );
-            }
-          );
-        }
-      }
-    );
+      );
+    }, 1000);
+    debounces();
   };
 
   getUser = (type, isError, msg, loading, id) => {
@@ -236,10 +239,7 @@ export default class Battle extends React.Component {
               }
               return errors;
             }}
-            onSubmit={debounce(
-              (values, obj) => this.handleSubmit(values, obj),
-              1000
-            )}
+            onSubmit={this.handleSubmit}
           >
             {(formProps) => {
               console.log("formProps", formProps);
