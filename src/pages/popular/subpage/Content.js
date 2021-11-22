@@ -17,7 +17,7 @@ class Content extends React.Component {
       // check: false,
       isErrors: false,
       errorMessage: "",
-      hasMore: false
+      hasMore: false,
       // hasMore: true, // 是否开启下拉加载
       // data: [], // 接受我每次的数据
       // count: 10, //下拉加载
@@ -26,7 +26,7 @@ class Content extends React.Component {
 
   componentDidMount() {
     const search = window.location.hash.slice(15) || "All";
-    this.getData(search, 1);
+    this.getData(search, this.state.page);
   }
 
   /* eslint-disable */
@@ -38,7 +38,7 @@ class Content extends React.Component {
           dataList: [],
           hasMore: false,
           isErrors: false,
-          page: 1
+          page: 1,
         },
         () => {
           this.getData(nextProps.currentIndex, 1, true);
@@ -55,7 +55,7 @@ class Content extends React.Component {
     this.setState(
       {
         page: page + 1,
-        hasMore: false
+        hasMore: false,
       },
       () => {
         this.getData(search, this.state.page);
@@ -86,7 +86,7 @@ class Content extends React.Component {
     }
     this.setState(
       {
-        loading: true
+        loading: true,
       },
       () => {
         axios.get(url).then((res) => {
@@ -107,35 +107,39 @@ class Content extends React.Component {
                   open_issues_count: items.open_issues_count,
                   avatar_url: items.owner.avatar_url,
                   svn_url: items.svn_url,
-                  html_url: items.owner.html_url
+                  html_url: items.owner.html_url,
                 }));
                 if (isChange) {
                   this.setState({
                     loading: false,
-                    hasMore: true,
-                    dataList: dataListData
+                    // hasMore: true,
+                    dataList: dataListData,
                   });
                 } else {
                   const { dataList } = this.state;
                   this.setState({
                     loading: false,
                     hasMore: true,
-                    dataList: dataList.concat(dataListData)
+                    dataList: dataList.concat(dataListData),
                   });
                 }
               } else {
                 this.setState({
-                  hasMore: false
+                  // hasMore: false,
                 });
               }
+            } else {
+              this.setState({
+                // hasMore: false,
+              });
             }
           } else {
             this.setState({
               isErrors: true,
               // dataList: [],
               loading: false,
-              hasMore: false,
-              errorMessage: res.msg
+              // hasMore: false,
+              errorMessage: res.msg,
             });
           }
         });
@@ -146,10 +150,12 @@ class Content extends React.Component {
   close = () => {
     this.setState(
       {
-        isErrors: false
+        isErrors: false,
+        // hasMore: true,
       },
       () => {
-        this.getData(this.props.currentIndex, 1, true);
+        // document.documentElement.scrollTop -= 200;
+        this.getData(this.props.currentIndex, this.state.page);
       }
     );
   };
@@ -167,98 +173,8 @@ class Content extends React.Component {
             <div>
               <ul className={assetsStyle["content-list"]}>
                 {dataList.map((item, index) => (
-                  <li key={item.id}>
+                  <li key={item.id + Math.random()}>
                     <PopularItem itemData={item} index={index} />
-                    {/* <h2
-                      className={`${assetsStyle["text-center"]} ${assetsStyle.score}`}
-                    >
-                      #{index + 1}
-                    </h2>
-                    <div
-                      className={`${assetsStyle["text-center"]} ${assetsStyle["content-avatar"]}`}
-                    >
-                      <img src={item.avatar_url} alt="" />
-                    </div>
-                    <h4
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        height: "36px",
-                        justifyContent: "center",
-                        marginBottom: "15px"
-                      }}
-                    >
-                      <a
-                        href={item.svn_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hidden1"
-                      >
-                        {item.full_name}
-                      </a>
-                    </h4>
-                    <div
-                      style={{
-                        marginBottom: "6px",
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center"
-                      }}
-                    >
-                      <i
-                        className="fa fa-skyatlas"
-                        style={{
-                          display: "inline-flex",
-                          width: "16px",
-                          justifyContent: "center",
-                          color: "rgb(255, 191, 116)"
-                        }}
-                      />
-                      <a
-                        href={item.html_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hidden1"
-                      >
-                        {item.name}
-                      </a>
-                    </div>
-                    <div style={{ marginBottom: "6px" }}>
-                      <i
-                        className="fa fa-user"
-                        style={{
-                          display: "inline-flex",
-                          width: "16px",
-                          justifyContent: "center",
-                          color: "rgb(255, 215, 0)"
-                        }}
-                      />
-                      {item.stargazers_count} stars
-                    </div>
-                    <div style={{ marginBottom: "6px" }}>
-                      <i
-                        className="fa fa-usb"
-                        style={{
-                          display: "inline-flex",
-                          width: "16px",
-                          justifyContent: "center",
-                          color: "rgb(129, 195, 245)"
-                        }}
-                      />
-                      {item.forks_count} forks
-                    </div>
-                    <div style={{ marginBottom: "6px" }}>
-                      <i
-                        className="fa fa-vk"
-                        style={{
-                          display: "inline-flex",
-                          width: "16px",
-                          justifyContent: "center",
-                          color: "rgb(241, 138, 147)"
-                        }}
-                      />
-                      {item.open_issues_count} Open issues
-                    </div> */}
                   </li>
                 ))}
               </ul>

@@ -1,0 +1,99 @@
+@import "../../styles/index.less";
+/* battle */
+.form-list {
+  display: flex;
+  flex-direction: row;
+}
+.form-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.form-content + .form-content {
+  margin-left: 10px;
+}
+.form-result {
+  background-color: #eee;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+.form-result .info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.form-result img {
+  background-color: #fff;
+  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  margin: 0 8px;
+  padding: 5px;
+}
+.form-result i {
+  font-size: 44px;
+  cursor: pointer;
+}
+.form-item {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+.form-input {
+  flex: 2;
+}
+.form-input input {
+  width: 90%;
+  margin-right: 20px;
+  height: 42px;
+  font-size: 18px;
+  padding-left: 16px;
+  border-radius: 30px;
+  border: none;
+  background-color: #eee;
+  outline: none;
+}
+.form-input .input-error {
+  height: 42px;
+  line-height: 42px;
+  padding-left: 15px;
+  color: red;
+}
+.form-content button {
+  color: rgba(0, 0, 0, 0.25);
+  border: unset !important;
+  cursor: not-allowed;
+  margin-left: 16px;
+  color: #fff;
+  font-size: 20px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  background-color: @primary-color;
+  cursor: pointer;
+}
+.btn-loading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.battle {
+  width: 120px;
+  height: 50px;
+  margin: 20px auto;
+  background-color: @primary-color;
+  font-size: 18px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 100px;
+}
+.battle a {
+  color: #fff;
+  text-decoration: none;
+}

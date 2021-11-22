@@ -2,7 +2,7 @@ import React from "react";
 
 import assetsStyle from "./index.less";
 
-class PopularItem extends React.Component {
+class ResultLi extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -10,16 +10,20 @@ class PopularItem extends React.Component {
 
   render() {
     const { itemData, index } = this.props;
+    console.log("itemData", itemData);
     return (
-      <div className={assetsStyle.popularItem}>
+      <div className={assetsStyle.resultItem} key={index}>
         <h2 className={`${assetsStyle["text-center"]} ${assetsStyle.score}`}>
-          #{index + 1}
+          {itemData.isWinner ? "Winner" : "Loser"}
         </h2>
         <div
           className={`${assetsStyle["text-center"]} ${assetsStyle["content-avatar"]}`}
         >
           <img src={itemData.avatar_url} alt="" />
         </div>
+        <h2 className={`${assetsStyle["text-center"]} ${assetsStyle.score}`}>
+          Scores: {itemData.public_repos}
+        </h2>
         <h4
           style={{
             display: "flex",
@@ -74,7 +78,7 @@ class PopularItem extends React.Component {
               color: "rgb(255, 215, 0)",
             }}
           />
-          {itemData.stargazers_count} stars
+          {itemData.following} stars
         </div>
         <div style={{ marginBottom: "6px" }}>
           <i
@@ -98,10 +102,10 @@ class PopularItem extends React.Component {
               color: "rgb(241, 138, 147)",
             }}
           />
-          {itemData.open_issues_count} Open issues
+          {itemData.public_repos} Open issues
         </div>
       </div>
     );
   }
 }
-export default PopularItem;
+export default ResultLi;

@@ -15,7 +15,7 @@ module.exports = function (env, argv) {
     entry: "./src/index.js",
     output: {
       filename: "bundle.js",
-      path: path.resolve(__dirname, "dist")
+      path: path.resolve(__dirname, "dist"),
     },
     module: {
       rules: [
@@ -23,7 +23,7 @@ module.exports = function (env, argv) {
           test: /\.js$/,
           exclude: /node_modules/,
           enforce: "pre",
-          use: ["babel-loader", "eslint-loader"]
+          use: ["babel-loader", "eslint-loader"],
         },
         // {
         //   test: /\.css$/,
@@ -38,8 +38,8 @@ module.exports = function (env, argv) {
           use: ["style-loader", "css-loader", "postcss-loader"],
           include: [
             path.resolve(__dirname, "src/styles"),
-            path.resolve(__dirname, "node_modules")
-          ]
+            path.resolve(__dirname, "node_modules"),
+          ],
         },
         {
           test: /\.css$/,
@@ -50,17 +50,17 @@ module.exports = function (env, argv) {
               loader: "css-loader",
               options: {
                 modules: {
-                  localIdentName: "[local]--[hash:base64:5]"
-                }
-              }
+                  localIdentName: "[local]--[hash:base64:5]",
+                },
+              },
             },
             "less-loader",
-            "postcss-loader"
+            "postcss-loader",
           ],
           exclude: [
             path.resolve(__dirname, "src/styles"),
-            path.resolve(__dirname, "node_modules")
-          ]
+            path.resolve(__dirname, "node_modules"),
+          ],
         },
         {
           test: /\.less$/,
@@ -71,45 +71,45 @@ module.exports = function (env, argv) {
               loader: "css-loader",
               options: {
                 modules: {
-                  localIdentName: "[path][name]__[local]--[hash:base64:5]"
+                  localIdentName: "[path][name]__[local]--[hash:base64:5]",
                 },
-                importLoaders: 2
-              }
+                importLoaders: 2,
+              },
             },
             "postcss-loader",
             {
-              loader: "less-loader"
-            }
-          ]
+              loader: "less-loader",
+            },
+          ],
         },
         // {test: /\.(woff|woff2|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000'},
         {
           test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
           loader: "url-loader",
           options: {
-            limit: 10000
-          }
-        }
-      ]
+            limit: 10000,
+          },
+        },
+      ],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "public/index.html"
+        template: "public/index.html",
       }),
       // new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
     ],
     resolve: {
       alias: {
         "@": path.resolve("src"),
-        utils: path.resolve("./src/utils")
-      }
+        utils: path.resolve("./src/utils"),
+      },
     },
     devServer: {
       // contentBase: "./dist",
       host: process.env.HOST || "127.0.0.1",
       port: process.env.PORT || 8080,
-      hot: true
+      // hot: true
       // proxy: {
       //   '/api': {
       //     target: 'http://you-awesome.api',
@@ -118,6 +118,6 @@ module.exports = function (env, argv) {
       //     changeOrigin: true,
       //   },
       // },
-    }
+    },
   };
 };
