@@ -16,7 +16,7 @@
     "**/*.{js,jsx}": "eslint --ext .js"
   },
   "scripts": {
-    "dev": "webpack-dev-server --hot",
+    "dev": "webpack-dev-server",
     "start": "webpack serve --config webpack.config.js",
     "build": "webpack --config webpack.prod.js --mode production",
     "serve": "node server.js",

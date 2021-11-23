@@ -97,7 +97,7 @@ module.exports = function (env, argv) {
         template: "public/index.html",
       }),
       // new webpack.NamedModulesPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
+      // new webpack.HotModuleReplacementPlugin(),
     ],
     resolve: {
       alias: {
@@ -109,7 +109,7 @@ module.exports = function (env, argv) {
       // contentBase: "./dist",
       host: process.env.HOST || "127.0.0.1",
       port: process.env.PORT || 8080,
-      // hot: true
+      hot: true,
       // proxy: {
       //   '/api': {
       //     target: 'http://you-awesome.api',

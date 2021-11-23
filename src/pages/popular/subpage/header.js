@@ -38,12 +38,6 @@ class Header extends React.Component {
     throttle();
   };
 
-  // tabChange = (id) => {
-  //   this.setState({
-  //     tabIndex: id,
-  //   });
-  // };
-
   throttle = (fn) => {
     let canRun = true;
     return () => {
